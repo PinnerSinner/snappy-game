@@ -1,42 +1,29 @@
-import React, { useState } from 'react';
-import pb from '../api'; // Import PocketBase client
+import React from 'react';
 
-const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        try {
-            await pb.collection('users').authWithPassword(email, password);
-            alert('Login successful!');
-        } catch (err) {
-            setError('Invalid credentials');
-        }
-    };
-
+function Login() {
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
+        <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+            <h2 className="text-2xl font-semibold mb-4">Login</h2>
+            <form className="flex flex-col gap-4 w-1/3">
                 <input
                     type="email"
                     placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    className="p-2 border border-gray-300 rounded"
                 />
                 <input
                     type="password"
                     placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    className="p-2 border border-gray-300 rounded"
                 />
-                <button type="submit">Login</button>
+                <button
+                    type="submit"
+                    className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                >
+                    Login
+                </button>
             </form>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
     );
-};
+}
 
 export default Login;
