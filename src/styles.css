@@ -1,0 +1,16 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f4f4f4;
+    padding: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.2rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
