@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Cards from "./components/Cards";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Dashboard from "./components/Dashboard";
 import "./styles.css";
 import PocketBase from "pocketbase";
 import "@fontsource/inter/400.css";
@@ -11,13 +12,22 @@ import "@fontsource/inter/700.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 const pb = new PocketBase("https://snappy.pockethost.io");
 
+function ProtectedRoute({ children }) {
+  const user = JSON.parse(localStorage.getItem("user"));
+  return user ? children : <Navigate to="/login" />;
+}
+
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    setUser(pb.authStore.model);
+    const storedUser = pb.authStore.model;
+    if (storedUser) {
+      setUser(storedUser);
+    }
     pb.authStore.onChange(() => setUser(pb.authStore.model));
   }, []);
+  
 
   return (
     <Router>
@@ -57,6 +67,7 @@ function App() {
         <Route path="/cards" element={user ? <Cards /> : <h1>Please log in to view the cards.</h1>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       </Routes>
     </Router>
   );
