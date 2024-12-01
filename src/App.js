@@ -1,13 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Cards from './components/Cards';
-import Login from './components/Login';
-import './styles.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Cards from "./components/Cards";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import "./styles.css";
+import PocketBase from "pocketbase";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/700.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+const pb = new PocketBase("https://snappy.pockethost.io");
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    setUser(pb.authStore.model);
+    pb.authStore.onChange(() => setUser(pb.authStore.model));
+  }, []);
+
   return (
     <Router>
-      {/* Navigation Bar */}
       <nav className="bg-blue-500 p-4">
         <div className="flex justify-center space-x-4">
           <a href="/" className="text-white text-lg font-semibold hover:underline">
@@ -21,8 +34,6 @@ function App() {
           </a>
         </div>
       </nav>
-
-      {/* Routes */}
       <Routes>
         <Route
           path="/"
@@ -43,8 +54,9 @@ function App() {
             </div>
           }
         />
-        <Route path="/cards" element={<Cards />} />
+        <Route path="/cards" element={user ? <Cards /> : <h1>Please log in to view the cards.</h1>} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
   );

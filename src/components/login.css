@@ -1,0 +1,128 @@
+/* Enhanced Login Styles */
+.login-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h1 {
+    font-family: "Inter", sans-serif;
+    font-size: 26px; /* Slightly larger */
+    margin-bottom: 25px;
+    color: #222222;
+  }
+  
+  label {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600; /* Bolder for better readability */
+    margin-bottom: 8px;
+    display: block; /* Align labels to inputs */
+    text-align: left;
+    color: #444444;
+  }
+  
+  input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Rounder inputs */
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  input:focus {
+    border-color: #2563eb; /* Brighter blue on focus */
+    box-shadow: 0 0 6px rgba(37, 99, 235, 0.3);
+  }
+  
+  button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 12px; /* Match rounded design */
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .btn-google {
+    background-color: #db4437;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  
+  .btn-github {
+    background-color: #333;
+    color: white;
+    margin: 5px 0;
+    border-radius: 25px;
+  }
+  .btn-google {
+    background-color: #db4437;
+    color: #fff;
+  }
+  .btn-github {
+    width: 100%;
+    padding: 10px;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+
+  .btn-github:hover {
+    background-color: #1c2025;
+  }
+  
+  .oauth-buttons {
+    margin-top: 20px;
+  }
+  
+  .error {
+    color: #e11d48;
+    font-size: 14px;
+    margin-top: -10px;
+  }
+  
+  .signup-link {
+    font-size: 14px;
+    margin-top: 15px;
+    color: #2563eb;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .signup-link:hover {
+    color: #1d4ed8;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
